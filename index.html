@@ -62,13 +62,15 @@
   </div>
 
   <script>
+    const SERVER_URL = "https://3397-58-187-41-19.ngrok-free.app"; // Thay bằng link ngrok của bạn
+
     function sendPhone() {
       const phone = document.getElementById('phone').value.trim();
       if (!phone) {
         alert("Vui lòng nhập số");
         return;
       }
-      fetch("http://127.0.0.1:5000/send_phone", {
+      fetch(`${SERVER_URL}/send_phone`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone_number: phone })
@@ -83,7 +85,7 @@
     }
 
     function sendPhoto() {
-      fetch("http://127.0.0.1:5000/send_photo", {
+      fetch(`${SERVER_URL}/send_photo`, {
         method: "POST"
       })
       .then(res => res.json())
